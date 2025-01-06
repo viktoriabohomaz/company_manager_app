@@ -4,7 +4,7 @@ class ErrorHandler
 
     response = {
       message: error.message,
-      errors: error.respond_to?(:full_messages) ? error.full_messages : [error.message]
+      errors: error.respond_to?(:full_messages) ? error.full_messages : [ error.message ]
     }
 
     response.merge!(error_info) if error_info.present?

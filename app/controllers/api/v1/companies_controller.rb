@@ -1,6 +1,5 @@
 module Api::V1
   class CompaniesController < ApplicationController
-    
     def index
       companies = Company.includes(:addresses).all
       render json: companies.as_json(include: :addresses), status: :ok
@@ -19,7 +18,7 @@ module Api::V1
     def bulk_import
       if params[:file].present?
         importer = CompanyImporter.new(params[:file])
-    
+
         begin
           imported_companies = importer.bulk_import
           render json: imported_companies.as_json(include: :addresses), status: :ok
@@ -27,7 +26,7 @@ module Api::V1
           handle_import_error(error)
         end
       else
-        render json: { error: 'No file provided' }, status: :bad_request
+        render json: { error: "No file provided" }, status: :bad_request
       end
     end
 
@@ -41,7 +40,7 @@ module Api::V1
     private
 
     def company_params
-      params.require(:company).permit(:name, :registration_number, addresses_attributes: [:street, :city, :postal_code, :country])
+      params.require(:company).permit(:name, :registration_number, addresses_attributes: [ :street, :city, :postal_code, :country ])
     end
 
     def handle_import_error(error)
@@ -49,5 +48,5 @@ module Api::V1
       Rails.logger.error("Import failed: #{error_response[:message]}")
       render json: error_response, status: :unprocessable_entity
     end
-  end 
-end 
+  end
+end

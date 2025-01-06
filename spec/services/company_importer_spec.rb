@@ -7,10 +7,10 @@ RSpec.describe CompanyImporter do
 
     before do
       CSV.open(file, 'w') do |csv|
-        csv << ['registration_number', 'name', 'street', 'city', 'postal_code', 'country']
-        csv << [123456, 'Test Company', '123 Main St', 'Anytown', '12345', 'USA']
-        csv << [789012, 'Another Company', '456 Elm St', 'Othertown', '', 'USA']
-        csv << [123456, 'Duplicate Company', '789 Oak St', 'Anytown', '67890', 'USA']
+        csv << [ 'registration_number', 'name', 'street', 'city', 'postal_code', 'country' ]
+        csv << [ 123456, 'Test Company', '123 Main St', 'Anytown', '12345', 'USA' ]
+        csv << [ 789012, 'Another Company', '456 Elm St', 'Othertown', '', 'USA' ]
+        csv << [ 123456, 'Duplicate Company', '789 Oak St', 'Anytown', '67890', 'USA' ]
       end
     end
 
@@ -38,8 +38,8 @@ RSpec.describe CompanyImporter do
 
     it "handles errors during import gracefully" do
       CSV.open(file, 'w') do |csv|
-        csv << ['registration_number', 'name', 'street', 'city', 'postal_code', 'country']
-        csv << [nil, '', '', '', '', '']
+        csv << [ 'registration_number', 'name', 'street', 'city', 'postal_code', 'country' ]
+        csv << [ nil, '', '', '', '', '' ]
       end
 
       importer = CompanyImporter.new(file)

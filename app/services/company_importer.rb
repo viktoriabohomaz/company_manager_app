@@ -1,5 +1,5 @@
 class CompanyImporter
-  BATCH_SIZE = 100 
+  BATCH_SIZE = 100
 
   def initialize(file)
     @file = file
@@ -26,7 +26,7 @@ class CompanyImporter
   private
 
   def process_row(row)
-    registration_number = row['registration_number']
+    registration_number = row["registration_number"]
     company = Company.find_or_initialize_by(registration_number: registration_number)
 
     if company.new_record?
@@ -39,8 +39,8 @@ class CompanyImporter
   end
 
   def create_company(company, row)
-    company.name = row['name']
-    
+    company.name = row["name"]
+
     if company.save
       create_addresses(company, row)
     else
@@ -52,23 +52,23 @@ class CompanyImporter
 
   def create_addresses(company, row)
     company.addresses.create!(
-      street: row['street'],
-      city: row['city'],
-      postal_code: row['postal_code'],
-      country: row['country']
+      street: row["street"],
+      city: row["city"],
+      postal_code: row["postal_code"],
+      country: row["country"]
     )
   rescue ActiveRecord::RecordInvalid => error
     log_error(error, row)
-    raise error 
+    raise error
   end
 
   def log_error(error, row)
     error_info = {
-      registration_number: row['registration_number'],
+      registration_number: row["registration_number"],
       row_data: row.to_h,
-      error_code: 'validation_error',
+      error_code: "validation_error"
     }
-    
+
     error_response = ErrorHandler.handle(error, error_info)
     Rails.logger.error("Error importing #{row['name']}: #{error_response[:errors].join(', ')}")
   end
