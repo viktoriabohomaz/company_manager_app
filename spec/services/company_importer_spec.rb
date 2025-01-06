@@ -10,7 +10,7 @@ RSpec.describe CompanyImporter do
         csv << ['registration_number', 'name', 'street', 'city', 'postal_code', 'country']
         csv << [123456, 'Test Company', '123 Main St', 'Anytown', '12345', 'USA']
         csv << [789012, 'Another Company', '456 Elm St', 'Othertown', '', 'USA']
-        csv << [123456, 'Duplicate Company', '789 Oak St', 'Anytown', '67890', 'USA'] # Duplicate registration number
+        csv << [123456, 'Duplicate Company', '789 Oak St', 'Anytown', '67890', 'USA']
       end
     end
 
