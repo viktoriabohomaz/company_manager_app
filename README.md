@@ -4,8 +4,6 @@ This project is an API-only Rails application designed to manage companies and t
 
 ---
 
-## Table of Contents
-
 - [Features](#features)
 - [Project Setup](#project-setup)
 - [Endpoints](#endpoints)
