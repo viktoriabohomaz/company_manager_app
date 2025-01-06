@@ -42,11 +42,11 @@ To get started:
 - Fetches all companies and their addresses.
 
 ### **2. POST /api/v1/companies**
-- Creates a new company with multiple addresses.
+- Creates a new company.
 
 ### **3. POST /api/v1/companies/import**
 - Imports companies and addresses from a CSV file.
 
 ### **4. GET /api/v1/companies/:id**
-- Fetches a specific company and its addresses by ID.
+- Shows a specific company and its addresses by ID.
 
