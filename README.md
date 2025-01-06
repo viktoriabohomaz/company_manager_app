@@ -24,7 +24,7 @@ This project is an API-only Rails application designed to manage companies and t
 
 ## Project Setup
 
-- **Ruby**: 3.3
+- **Ruby**: 3.2.0
 - **Rails**: 8.0
 - **Testing Framework**: RSpec
 
